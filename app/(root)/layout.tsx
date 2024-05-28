@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Topbar />
-        <main className="flex flex-row">
+        <main className="main-container">
           <div>
             {children}
           </div>

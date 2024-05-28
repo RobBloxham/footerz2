@@ -10,10 +10,11 @@ function Topbar() {
   const router = useRouter();
   const pathname = usePathname();
   const { userId } = useAuth();
+  
   return (
     <nav className='topbar'>
       <Link href='/' className='flex items-center gap-4'>
-        <Image src='../../public/assets/logo-no-background.svg' alt='logo' width={28} height={28} />
+        <Image src='/assets/logo-no-background.svg' alt='logo' width={28} height={28} />
         <p className='text-heading3-bold text-light-1 max-xs:hidden'>Footerz</p>
       </Link>
           <SignedIn>
