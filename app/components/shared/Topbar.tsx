@@ -1,5 +1,5 @@
 "use client";
-import { SignedIn, SignOutButton, useAuth } from "@clerk/nextjs";
+import { SignedIn, SignOutButton, useAuth, SignInButton, SignedOut } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,6 +56,19 @@ function Topbar() {
               </div>
             </SignOutButton>
           </SignedIn>
+          <SignedOut>
+          <SignInButton
+          >
+            <div className='flex cursor-pointer text-white'>
+              <Image
+                src='/assets/members.svg'
+                alt='login'
+                width={24}
+                height={24}
+              /> sign in
+            </div>
+          </SignInButton>
+          </SignedOut>
     </nav>
   );
 }
