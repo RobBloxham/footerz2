@@ -1,5 +1,5 @@
 "use client";
-import { SignedIn, SignOutButton, useAuth, SignInButton, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignOutButton, useAuth, SignInButton, SignedOut, OrganizationSwitcher } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,16 +45,24 @@ function Topbar() {
             </div>
           );
         })}
-            <SignOutButton>
-              <div className='flex cursor-pointer text-white'>
-                <Image
-                  src='/assets/logout.svg'
-                  alt='logout'
-                  width={24}
-                  height={24}
-                /> sign out
+          <OrganizationSwitcher
+            appearance={{
+              baseTheme: dark,
+              elements: {
+                organizationSwitcherTrigger: "py-2 px-4",
+              },
+            }}
+          />
+          <SignOutButton>
+            <div className='flex cursor-pointer text-white'>
+              <Image
+                src='/assets/logout.svg'
+                alt='logout'
+                width={24}
+                height={24}
+            /> sign out
               </div>
-            </SignOutButton>
+          </SignOutButton>
           </SignedIn>
           <SignedOut>
           <SignInButton
