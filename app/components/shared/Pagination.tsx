@@ -1,10 +1,10 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-import SneakersCard from "../components/cards/SneakersCard";
+import ThreadCard from "@/components/cards/ThreadCard";
+import Pagination from "../../components/shared/Pagination";
 
-
-import { fetchSneakers } from "@/lib/actions/sneakers.actions";
+import { fetchPosts } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 
 async function Home({
@@ -18,7 +18,7 @@ async function Home({
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  const result = await fetchSneakers(
+  const result = await fetchPosts(
     searchParams.page ? +searchParams.page : 1,
     30
   );
@@ -33,7 +33,7 @@ async function Home({
         ) : (
           <>
             {result.posts.map((post) => (
-              <SneakersCard
+              <ThreadCard
                 key={post._id}
                 id={post._id}
                 currentUserId={user.id}
@@ -48,6 +48,12 @@ async function Home({
           </>
         )}
       </section>
+
+      <Pagination
+        path='/'
+        pageNumber={searchParams?.page ? +searchParams.page : 1}
+        isNext={result.isNext}
+      />
     </>
   );
 }

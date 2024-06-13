@@ -40,7 +40,7 @@ function CreateSneakers({ userId }: Props) {
 
   const onSubmit = async (values: z.infer<typeof SneakersValidation>) => {
     await createSneakers({
-      nickname: values.sneakers,
+      nickname: values.nickname,
       colorway: values.colorway,
       releaseDate: values.releaseDate,
       author: userId,
@@ -58,7 +58,7 @@ function CreateSneakers({ userId }: Props) {
       >
         <FormField
           control={form.control}
-          name='thread'
+          name='nickname'
           render={({ field }) => (
             <FormItem className='flex w-full flex-col gap-3'>
               <FormLabel className='text-base-semibold text-light-2'>
@@ -73,7 +73,7 @@ function CreateSneakers({ userId }: Props) {
         />
         <FormField
           control={form.control}
-          name='thread'
+          name='colorway'
           render={({ field }) => (
             <FormItem className='flex w-full flex-col gap-3'>
               <FormLabel className='text-base-semibold text-light-2'>
@@ -88,7 +88,7 @@ function CreateSneakers({ userId }: Props) {
         />
         <FormField
           control={form.control}
-          name='thread'
+          name='releaseDate'
           render={({ field }) => (
             <FormItem className='flex w-full flex-col gap-3'>
               <FormLabel className='text-base-semibold text-light-2'>
@@ -103,7 +103,7 @@ function CreateSneakers({ userId }: Props) {
         />
 
         <Button type='submit' className='bg-primary-500'>
-          Post Thread
+          Add Sneakers
         </Button>
       </form>
     </Form>

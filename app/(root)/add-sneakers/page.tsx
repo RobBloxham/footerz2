@@ -1,7 +1,7 @@
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
 import { fetchUser } from '@/lib/actions/user.actions';
-
+import CreateSneakers from '../../components/forms/CreateSneakers';
 
 async function Page() {
     const user = await currentUser();
